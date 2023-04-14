@@ -10,7 +10,7 @@
  *
  * Return: Nothing.
  */
-void simple_print_buffer(char *buffer, unsigned int size)
+void simple_print_buffer(int *buffer, unsigned int size)
 {
 	unsigned int i;
 
@@ -23,14 +23,13 @@ void simple_print_buffer(char *buffer, unsigned int size)
 	}
 	if (!(i % 10) && i)
 	{
-	printf("\n");
+		printf("\n");
 	}
 	printf("0x%02x", buffer[i]);
 	i++;
 	}
 	printf("\n");
 }
-
 /**
  * main - check the code
  *
@@ -38,13 +37,10 @@ void simple_print_buffer(char *buffer, unsigned int size)
  */
 int main(void)
 {
-	char *a;
+	int *a;
 
-	a = _calloc(98, sizeof(char));
-	strcpy(a, "Best");
-	strcpy(a + 4, " School! :)\n");
-	a[97] = '!';
-	simple_print_buffer(a, 98);
+	a = array_range(0, 10);
+	simple_print_buffer(a, 11);
 	free(a);
 	return (0);
 }
